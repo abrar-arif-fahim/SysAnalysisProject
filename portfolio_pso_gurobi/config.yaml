@@ -1,0 +1,27 @@
+assets:
+  names: ["stocks", "bonds", "crypto"]
+  mu: [0.10, 0.04, 0.18]
+  rf_rate: 0.02
+
+commission:
+  rates: [0.002, 0.001, 0.005]
+
+portfolio:
+  budget: 10000
+  max_assets: 2
+  risk_aversion: 3.0
+
+pso:
+  omega: 0.72
+  c1: 1.49
+  c2: 1.49
+  n_particles: 30
+  n_iter: 100
+  seed: 42
+
+gurobi:
+  time_limit: 60
+  mip_gap: 0.001
+
+random_search:
+  n_samples: 5000

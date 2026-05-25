@@ -1,0 +1,45 @@
+2026-05-26 01:32:37,159 | INFO    | portfolio | PSO finished: best_sharpe=0.7899986111075613
+2026-05-26 01:32:37,240 | INFO    | portfolio | PSO finished: best_sharpe=0.776002576319365
+2026-05-26 01:32:37,271 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770515997
+2026-05-26 01:32:37,287 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025767488976
+2026-05-26 01:32:37,307 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770497776
+2026-05-26 01:32:37,318 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025441997875
+2026-05-26 01:32:37,329 | INFO    | portfolio | PSO finished: best_sharpe=0.7760021807214663
+2026-05-26 01:32:37,341 | INFO    | portfolio | PSO finished: best_sharpe=0.776002555525366
+2026-05-26 01:32:37,354 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025544857487
+2026-05-26 01:34:21,989 | INFO    | portfolio | Gurobi solved: obj=0.06870083333333332, sharpe=0.9106903733316883
+2026-05-26 01:34:22,012 | INFO    | portfolio | PSO finished: best_sharpe=0.7899986111075613
+2026-05-26 01:34:22,050 | INFO    | portfolio | PSO finished: best_sharpe=0.776002576319365
+2026-05-26 01:34:22,072 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770515997
+2026-05-26 01:34:22,090 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025767488976
+2026-05-26 01:34:22,104 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770497776
+2026-05-26 01:34:22,118 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025441997875
+2026-05-26 01:34:22,131 | INFO    | portfolio | PSO finished: best_sharpe=0.7760021807214663
+2026-05-26 01:34:22,146 | INFO    | portfolio | PSO finished: best_sharpe=0.776002555525366
+2026-05-26 01:34:22,159 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025544857487
+2026-05-26 01:34:41,283 | INFO    | portfolio | Attempting to fetch market data via yfinance...
+2026-05-26 01:34:41,284 | ERROR   | portfolio | yfinance import failed
+Traceback (most recent call last):
+  File "d:\vscode\SysAnalysisProject\portfolio_pso_gurobi\data\fetch_yfinance.py", line 17, in fetch_market_data
+    import yfinance as yf
+ModuleNotFoundError: No module named 'yfinance'
+2026-05-26 01:34:41,285 | WARNING | portfolio | Falling back to synthetic data generation...
+2026-05-26 01:34:41,329 | INFO    | portfolio | Generated synthetic returns and covariance into d:\vscode\SysAnalysisProject\portfolio_pso_gurobi\data
+2026-05-26 01:34:41,377 | INFO    | portfolio | Running PSO...
+2026-05-26 01:34:41,557 | INFO    | portfolio | PSO finished: best_sharpe=0.4585675706935168
+2026-05-26 01:34:44,235 | INFO    | portfolio | Running Gurobi (if available)...
+2026-05-26 01:34:44,236 | ERROR   | portfolio | Gurobi import failed
+Traceback (most recent call last):
+  File "d:\vscode\SysAnalysisProject\portfolio_pso_gurobi\src\gurobi_optimizer.py", line 11, in solve_gurobi_portfolio
+    import gurobipy as gp
+ModuleNotFoundError: No module named 'gurobipy'
+2026-05-26 01:34:44,237 | WARNING | portfolio | Gurobi step skipped: Gurobi not available or import failed: No module named 'gurobipy'
+2026-05-26 01:34:44,237 | INFO    | portfolio | Computing baselines...
+2026-05-26 01:34:44,940 | INFO    | portfolio | Done. Results in results/ folder.
+2026-05-26 01:38:07,007 | INFO    | portfolio | Running PSO...
+2026-05-26 01:38:07,246 | INFO    | portfolio | PSO finished: best_sharpe=0.4585675706935168
+2026-05-26 01:38:07,840 | INFO    | portfolio | Running Gurobi (if available)...
+2026-05-26 01:38:07,841 | WARNING | portfolio | gurobipy not installed or unavailable: No module named 'gurobipy'
+2026-05-26 01:38:07,841 | WARNING | portfolio | Gurobi unavailable; skipping Gurobi result output.
+2026-05-26 01:38:07,841 | INFO    | portfolio | Computing baselines...
+2026-05-26 01:38:08,558 | INFO    | portfolio | Done. Results in results/ folder.
