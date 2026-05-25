@@ -1,40 +1,94 @@
-# portfolio_pso_gurobi
+# Portfolio Optimization: PSO vs Gurobi
 
-This project compares Particle Swarm Optimization (PSO) and Gurobi for a 3-asset portfolio (stocks, bonds, crypto) while accounting for transaction commissions and a knapsack-style asset selection (maximum number of selected assets).
+A comparative study of Particle Swarm Optimization and Gurobi for multi-asset portfolio optimization with transaction costs and asset selection constraints.
 
-Overview
-- PSO: metaheuristic maximizing an adjusted Sharpe ratio (includes commission cost).
-- Gurobi: quadratic optimization maximizing expected return minus risk penalty (lambda * variance) and commission cost; Sharpe is computed after solving for comparison.
-- Baselines: equal-weight and random-search.
+## Project Overview
 
-Knapsack-style constraint: binary selection variables ensure at most `max_assets` are used and `w_i <= z_i` enforces weight only if asset selected.
+This project implements and evaluates two optimization approaches for portfolio allocation:
 
-Commission modeling: proportional commission rates per asset are subtracted from returns when computing net return.
+- **Particle Swarm Optimization (PSO)**: A metaheuristic algorithm that maximizes the Sharpe ratio after accounting for transaction costs
+- **Gurobi**: A commercial solver using quadratic programming to maximize risk-adjusted returns
 
-Usage
-1. Create venv and install dependencies:
+Both approaches are tested on a 3-asset portfolio (stocks, bonds, cryptocurrencies) subject to knapsack-style constraints that limit the number of active assets and enforce weight restrictions.
 
-```powershell
+## Key Features
+
+- **Constraint Modeling**: Binary selection variables enforce asset selection limits and weight dependencies
+- **Transaction Costs**: Per-asset commission rates are incorporated into return calculations
+- **Performance Comparison**: Includes baselines (equal-weight, random search) for context
+- **Configurable Parameters**: All settings defined in `config.yaml`
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+
+### Setup
+
+```bash
 python -m venv venv
-venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-2. Run the project:
+## Usage
 
-```powershell
+### Running Experiments
+
+```bash
 python main.py
 ```
 
-3. Run tests:
+Results are saved to the `results/` directory.
 
-```powershell
+### Running Tests
+
+```bash
 pytest
 ```
 
-Files
-- `main.py`: orchestrates experiments and saves results into `results/`.
-- `config.yaml`: parameters for assets, PSO, Gurobi, etc.
-- `data/synthetic_gen.py`: generates `returns.csv` and `covariance.csv` if missing.
-- `src/`: implementation modules.
-- `tests/`: pytest tests.
+## Project Structure
+
+```
+portfolio_pso_gurobi/
+├── main.py              # Experiment orchestration
+├── config.yaml          # Configuration parameters
+├── requirements.txt
+├── data/
+│   └── synthetic_gen.py # Generates synthetic market data
+├── src/                 # Core implementation modules
+└── tests/               # Unit tests
+```
+
+## Configuration
+
+Edit `config.yaml` to adjust:
+
+- Asset parameters (expected returns, volatility, commissions)
+- PSO hyperparameters (swarm size, iterations, inertia)
+- Gurobi solver settings
+- Portfolio constraints (max assets, weight bounds)
+
+## Data
+
+Synthetic market data (`returns.csv`, `covariance.csv`) is generated automatically on first run. To regenerate:
+
+```bash
+python data/synthetic_gen.py
+```
+
+## Results
+
+Optimization results are exported to `results/` including:
+
+- Optimal allocations
+- Risk and return metrics
+- Sharpe ratios
+- Solver performance metrics
+
+## References
+
+- PSO Algorithm: [Kennedy & Eberhart, 1995]
+- Portfolio Theory: [Markowitz, 1952]
