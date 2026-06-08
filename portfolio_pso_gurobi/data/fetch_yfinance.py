@@ -1,7 +1,13 @@
 from pathlib import Path
+import argparse
+import sys
 from typing import List, Dict, Optional
 import pandas as pd
 import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.errors import DataError
 from src.logger import logger
@@ -64,3 +70,22 @@ def fetch_market_data(output_dir: Path, assets: List[str], tickers_map: Optional
         raise DataError(f"Failed to save data: {e}")
     logger.info("Fetched market data and saved to %s", output_dir)
     return True
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Fetch market data and write returns/covariance CSV files.")
+    parser.add_argument("--output-dir", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument("--assets", nargs="+", default=["stocks", "bonds", "crypto"])
+    parser.add_argument("--start", default="2019-01-01")
+    parser.add_argument("--end", default=None)
+    args = parser.parse_args()
+
+    ok = fetch_market_data(args.output_dir, args.assets, start=args.start, end=args.end)
+    if ok:
+        print(f"Fetched market data into {args.output_dir}")
+    else:
+        print("Market data fetch failed. Check that yfinance is installed and network access is available.")
+
+
+if __name__ == "__main__":
+    main()

@@ -83,3 +83,17 @@ ModuleNotFoundError: No module named 'gurobipy'
 2026-06-08 11:01:57,095 | WARNING | portfolio | Gurobi unavailable; skipping Gurobi result output.
 2026-06-08 11:01:57,096 | INFO    | portfolio | Computing baselines...
 2026-06-08 11:01:58,029 | INFO    | portfolio | Done. Results in results/ folder.
+2026-06-08 11:08:00,731 | INFO    | portfolio | Gurobi solved: obj=0.06870083333333332, sharpe=0.9106903733316883
+2026-06-08 11:08:00,773 | INFO    | portfolio | PSO finished: best_sharpe=0.7899986111075613
+2026-06-08 11:08:00,813 | INFO    | portfolio | PSO finished: best_sharpe=0.776002576319365
+2026-06-08 11:08:00,826 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770515997
+2026-06-08 11:08:00,838 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025767488976
+2026-06-08 11:08:00,849 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770497776
+2026-06-08 11:08:00,862 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025441997875
+2026-06-08 11:08:00,878 | INFO    | portfolio | PSO finished: best_sharpe=0.7760021807214663
+2026-06-08 11:08:00,894 | INFO    | portfolio | PSO finished: best_sharpe=0.776002555525366
+2026-06-08 11:08:00,914 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025544857487
+2026-06-08 11:08:37,787 | WARNING | portfolio | yfinance not installed or could not be imported: No module named 'yfinance'
+2026-06-08 11:09:46,863 | WARNING | portfolio | yfinance not installed or could not be imported: No module named 'yfinance'
+2026-06-08 11:13:12,779 | WARNING | portfolio | yfinance not installed or could not be imported: No module named 'yfinance'
+2026-06-08 11:14:20,621 | INFO    | portfolio | Fetched market data and saved to D:\vscode\SysAnalysisProject\portfolio_pso_gurobi\data
