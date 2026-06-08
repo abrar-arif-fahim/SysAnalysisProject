@@ -13,6 +13,25 @@ from src.errors import DataError, GurobiError, PSOError
 from src.logger import logger
 
 
+def _format_weights(weights, assets):
+    return ", ".join(f"{asset}: {float(weight):.4f}" for asset, weight in zip(assets, weights))
+
+
+def _print_portfolio_result(title, result, assets):
+    print(f"\n{title}")
+    print("-" * len(title))
+    print(f"Sharpe: {float(result['sharpe']):.6f}")
+    if "return" in result:
+        print(f"Return: {float(result['return']):.6f}")
+    if "risk" in result:
+        print(f"Risk: {float(result['risk']):.6f}")
+    if "commission" in result:
+        print(f"Commission: {float(result['commission']):.6f}")
+    if "objective" in result:
+        print(f"Objective: {float(result['objective']):.6f}")
+    print(f"Weights: {_format_weights(result['weights'], assets)}")
+
+
 def main():
     root = Path(__file__).parent
     cfg = load_config(root / "config.yaml")
@@ -60,6 +79,7 @@ def main():
     logger.info("Running Gurobi (if available)...")
     gurobi_cfg = cfg.get("gurobi", {})
     gurobi_res = None
+    gurobi_unavailable_reason = "gurobipy is not installed or unavailable."
     try:
         gurobi_res = solve_gurobi_portfolio(mu, covariance, commission_rates, cfg["portfolio"]["max_assets"], cfg["portfolio"]["risk_aversion"], gurobi_cfg)
         if gurobi_res is not None:
@@ -68,6 +88,7 @@ def main():
             logger.warning("Gurobi unavailable; skipping Gurobi result output.")
     except GurobiError as e:
         logger.warning("Gurobi step skipped: %s", e)
+        gurobi_unavailable_reason = str(e)
         gurobi_res = None
 
     # Equal-weight baseline
@@ -78,18 +99,29 @@ def main():
     # Comparison CSV
     import pandas as pd
     rows = []
-    rows.append({"method": "pso", "sharpe": float(best_sharpe), "weights": best_w.tolist()})
     if gurobi_res is not None:
-        rows.append({"method": "gurobi", "sharpe": float(gurobi_res.get("sharpe", 0.0)), "weights": gurobi_res.get("weights", [])})
-    rows.append({"method": "equal_weight", "sharpe": ew["sharpe"], "weights": ew["weights"]})
-    rows.append({"method": "random_search", "sharpe": rs["sharpe"], "weights": rs["weights"]})
+        rows.append({"method": "Gurobi", "sharpe": float(gurobi_res.get("sharpe", 0.0)), "weights": gurobi_res.get("weights", [])})
+    rows.append({"method": "PSO", "sharpe": float(best_sharpe), "weights": best_w.tolist()})
+    rows.append({"method": "Equal Weight", "sharpe": ew["sharpe"], "weights": ew["weights"]})
+    rows.append({"method": "Random Search", "sharpe": rs["sharpe"], "weights": rs["weights"]})
     df = pd.DataFrame(rows)
     df.to_csv(root / "results" / "comparison_report.csv", index=False)
 
+    # Terminal report
+    if gurobi_res is not None:
+        _print_portfolio_result("Gurobi optimized result", gurobi_res, assets)
+    else:
+        print(f"\nGurobi optimized result\n-----------------------\nGurobi result unavailable because {gurobi_unavailable_reason}")
+    _print_portfolio_result("PSO optimized result", {"weights": best_w.tolist(), "sharpe": float(best_sharpe)}, assets)
+    print("\nFinal comparison report")
+    print("-----------------------")
+    print(df.to_string(index=False))
+
     # Plot weights bar
-    result_paths = [root / "results" / "best_pso_portfolio.json"]
+    result_paths = []
     if gurobi_res is not None:
         result_paths.append(root / "results" / "best_gurobi_portfolio.json")
+    result_paths.append(root / "results" / "best_pso_portfolio.json")
     plot_weights_bar(result_paths, assets, root / "results" / "plots" / "weights.png")
     plot_portfolio_comparison(root / "results" / "comparison_report.csv", root / "results" / "plots" / "comparison.png")
 

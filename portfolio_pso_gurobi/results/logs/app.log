@@ -43,3 +43,43 @@ ModuleNotFoundError: No module named 'gurobipy'
 2026-05-26 01:38:07,841 | WARNING | portfolio | Gurobi unavailable; skipping Gurobi result output.
 2026-05-26 01:38:07,841 | INFO    | portfolio | Computing baselines...
 2026-05-26 01:38:08,558 | INFO    | portfolio | Done. Results in results/ folder.
+2026-05-27 15:28:33,020 | INFO    | portfolio | Fetched market data and saved to portfolio_pso_gurobi\data
+2026-06-08 10:55:41,492 | INFO    | portfolio | Gurobi solved: obj=0.06870083333333332, sharpe=0.9106903733316883
+2026-06-08 10:55:41,518 | INFO    | portfolio | PSO finished: best_sharpe=0.7899986111075613
+2026-06-08 10:55:41,574 | INFO    | portfolio | PSO finished: best_sharpe=0.776002576319365
+2026-06-08 10:55:41,597 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770515997
+2026-06-08 10:55:41,614 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025767488976
+2026-06-08 10:55:41,626 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770497776
+2026-06-08 10:55:41,640 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025441997875
+2026-06-08 10:55:41,656 | INFO    | portfolio | PSO finished: best_sharpe=0.7760021807214663
+2026-06-08 10:55:41,669 | INFO    | portfolio | PSO finished: best_sharpe=0.776002555525366
+2026-06-08 10:55:41,683 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025544857487
+2026-06-08 10:57:01,891 | INFO    | portfolio | Running PSO...
+2026-06-08 10:57:02,164 | INFO    | portfolio | PSO finished: best_sharpe=0.8624003950333554
+2026-06-08 10:57:07,684 | INFO    | portfolio | Running Gurobi (if available)...
+2026-06-08 10:57:07,902 | INFO    | portfolio | Gurobi solved: obj=0.07310645127604332, sharpe=0.9527437172501657
+2026-06-08 10:57:07,905 | INFO    | portfolio | Computing baselines...
+2026-06-08 10:57:08,590 | INFO    | portfolio | Done. Results in results/ folder.
+2026-06-08 11:01:19,574 | INFO    | portfolio | Running PSO...
+2026-06-08 11:01:19,619 | INFO    | portfolio | Gurobi solved: obj=0.06870083333333332, sharpe=0.9106903733316883
+2026-06-08 11:01:19,640 | INFO    | portfolio | PSO finished: best_sharpe=0.7899986111075613
+2026-06-08 11:01:19,669 | INFO    | portfolio | PSO finished: best_sharpe=0.776002576319365
+2026-06-08 11:01:19,682 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770515997
+2026-06-08 11:01:19,695 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025767488976
+2026-06-08 11:01:19,714 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025770497776
+2026-06-08 11:01:19,728 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025441997875
+2026-06-08 11:01:19,741 | INFO    | portfolio | PSO finished: best_sharpe=0.7760021807214663
+2026-06-08 11:01:19,757 | INFO    | portfolio | PSO finished: best_sharpe=0.776002555525366
+2026-06-08 11:01:19,770 | INFO    | portfolio | PSO finished: best_sharpe=0.7760025544857487
+2026-06-08 11:01:19,778 | INFO    | portfolio | PSO finished: best_sharpe=0.8624003950333554
+2026-06-08 11:01:20,390 | INFO    | portfolio | Running Gurobi (if available)...
+2026-06-08 11:01:20,452 | INFO    | portfolio | Gurobi solved: obj=0.07310645127604332, sharpe=0.9527437172501657
+2026-06-08 11:01:20,454 | INFO    | portfolio | Computing baselines...
+2026-06-08 11:01:21,022 | INFO    | portfolio | Done. Results in results/ folder.
+2026-06-08 11:01:54,680 | INFO    | portfolio | Running PSO...
+2026-06-08 11:01:54,858 | INFO    | portfolio | PSO finished: best_sharpe=0.8624003950333554
+2026-06-08 11:01:57,094 | INFO    | portfolio | Running Gurobi (if available)...
+2026-06-08 11:01:57,095 | WARNING | portfolio | gurobipy not installed or unavailable: No module named 'gurobipy'
+2026-06-08 11:01:57,095 | WARNING | portfolio | Gurobi unavailable; skipping Gurobi result output.
+2026-06-08 11:01:57,096 | INFO    | portfolio | Computing baselines...
+2026-06-08 11:01:58,029 | INFO    | portfolio | Done. Results in results/ folder.
